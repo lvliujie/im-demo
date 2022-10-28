@@ -1,28 +1,35 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <el-menu default-active="1" class="el-menu-demo" mode="horizontal">
+      <el-menu-item index="1" @click.native="toHomepage">操作页面</el-menu-item>
+      <el-menu-item index="2" @click.native="toGroupMessage">配置页面</el-menu-item>
+    </el-menu>
+    <div>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
   components: {
-    HelloWorld
+  },
+  methods: {
+    toHomepage() {
+      this.$router.push({
+        name: 'homepage'
+      })
+    },
+    toGroupMessage() {
+      this.$router.push({
+        name: 'groupMessages'
+      })
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
